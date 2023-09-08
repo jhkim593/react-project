@@ -60,21 +60,18 @@ function MainPage(){
   }
     
   return (
-    <>
-      <main>
-        <p>{time.hours()}:{time.minutes()}:{time.seconds()}</p>
-        {!isStart? <button onClick={start}>시작</button>  :<button onClick={stop}>중지</button>}
-        {isStart && isPause ? <button onClick={resume}>재개</button> : null}
-        {isStart && !isPause ? <button onClick={pause}>일시정지</button> : null}
-        {isStart ? <button onClick={check}>기록</button>: null}
-        <section>
-          {timeLine.map((t) => 
-             <article key={t.id}>{t.time.hours()}:{t.time.minutes()}:{t.time.seconds()}</article>
-          )}
-        </section>
-      </main>
-
-    </>
+    <main>
+      <p>{time.hours()}:{time.minutes()}:{time.seconds()}</p>
+      {!isStart? <button onClick={start}>시작</button> :<button onClick={stop}>중지</button>}
+      {isStart && isPause ? <button onClick={resume}>재개</button> : null}
+      {isStart && !isPause ? <button onClick={pause}>일시정지</button> : null}
+      {isStart ? <button onClick={check}>기록</button>: null}
+      <section>
+        {timeLine.map((t) => 
+            <article key={t.id}>{t.time.hours()}:{t.time.minutes()}:{t.time.seconds()}</article>
+        )}
+      </section>
+    </main>
   )
 }
 

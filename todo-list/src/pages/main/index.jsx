@@ -1,18 +1,25 @@
 import "./main.css";
 import { CreateModal, DetailModal, UpdateModal } from "components";
 import React, { useEffect, useState } from "react";
-import TopInfo from "topInfo";
-import { getTodosApi } from "service";
+import { getTodosApi, deleteTodoApi } from "service";
+import { useNavigate } from "react-router-dom";
 import TodoItem from "./todoItem";
 import Empty from "./empty";
+import TopInfo from "./topInfo";
 
 function MainPage() {
+  const navigate = useNavigate();
+
   const [clickedItem, setClickedItem] = useState(null);
   const [isOpenCreateModal, setIsOpenCreateModal] = useState(false);
   const [isOpenDetailModal, setIsOpenDetailModal] = useState(false);
   const [isOpenUpdateModal, setIsOpenUpdateModal] = useState(false);
   const [todoList, setTodoList] = useState([]);
 
+  const getTodoList = async () => {
+    const { data } = await getTodosApi();
+    setTodoList(data);
+  };
   const onCloseModal = (key) => {
     if (key === "detail" || "update") {
       if (key === "detail") {
@@ -27,8 +34,11 @@ function MainPage() {
   };
 
   const onClickDelete = (id) => () => {
-    const deletedList = todoList.filter((item) => item.id !== id);
-    setTodoList(deletedList);
+    deleteTodoApi(id).then(async () => {
+      await getTodoList();
+    });
+    // const deletedList = todoList.filter((item) => item.id !== id);
+    // setTodoList(deletedList);
   };
 
   const onClickComplete = (id) => () => {
@@ -54,8 +64,9 @@ function MainPage() {
   };
 
   const onClickedTitle = (id) => () => {
-    onClickedItem(id);
-    setIsOpenDetailModal(true);
+    navigate(`todos/${id}`);
+    // onClickedItem(id);
+    // setIsOpenDetailModal(true);
   };
 
   const onClickedUpdate = (id) => () => {
@@ -67,9 +78,7 @@ function MainPage() {
   };
 
   useEffect(() => {
-    getTodosApi().then((data) => {
-      console.log(data);
-    });
+    getTodoList();
   }, []);
   return (
     <>
