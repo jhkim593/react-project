@@ -1,0 +1,138 @@
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;  
+}
+
+h1{
+    margin: 32px auto 0;
+    font-size: 52px;
+    font-weight: 700;
+}
+
+.topNavbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.todoList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top : 60px;
+    border-top: 1px solid #aaaaaa;
+    padding-top: 60px;
+}
+
+.todoItem{
+    width: 100%;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    flex-direction: row;
+    padding :20px;
+    border-radius: 8px;
+    cursor: pointer;
+    -moz-box-shadow: 3px 3px 10px 3px #b7b1b1;
+    box-shadow: 3px 3px 10px 3px #b7b1b1;
+    justify-content: space-between;
+}
+.todoItem:not(.complete):hover{
+    bottom: 4px;
+    right:4px;
+}
+
+.todoItem + .todoItem {
+    margin-top: 20px;
+}
+
+.todoItem.complete {
+    background-color: #eeeeee;
+}
+
+.todoItem button{
+    user-select: none;
+    outline: none;
+    border: 1px solid #c2cad4;
+    cursor: pointer;
+    padding: 8px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.todoItem button + button{
+    margin-left: 8px;
+}
+
+.completeButton {
+    color: #3e3f15;
+    border: 1px solid #3e3f15
+}
+.completeButton:hover{
+    color: #39641f;
+    border: 1px solid #39641f;
+}
+
+.deleteButton {
+    color: #f42d16;
+    border: 1px solid #f42d16
+}
+.deleteButton:hover{
+    color: #f65745;
+    border: 1px solid #f65745;
+}
+
+.editButton{
+    color: #808080;
+    border: 1px solid #808080;
+}
+
+.editButton:hover{
+    color: #aaaaaa;
+    border: 1px solid #aaaaaa;
+}
+
+.todoTitle{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.createdDate{
+    font-size: 12px;
+    font-weight: 400px;
+    color: grey;
+}
+
+.topNavbar > time{
+    font-size: 24px;
+}
+.addButton{
+    user-select: none;
+    outline: none;
+    border: 1px solid #c2cad4;
+    cursor: pointer;
+    color: #858c97;
+    padding: 24px;
+    border-radius: 8px;
+
+}
+.addButton:hover{
+    color: #ced0da;
+    border-color: #aaafb9;
+}
+
+.emptyText{
+    font-size: 32px;
+    font-weight: 400px;
+    color: gray;
+}
